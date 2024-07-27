@@ -1,0 +1,28 @@
+{
+  "name": "sso",
+  "version": "1.0.0",
+  "description": "Multiple server maneger",
+  "main": "index.js",
+  "author": "AYUSH DHAR",
+  "license": "MIT",
+  "scripts": {
+    "authServerDev": "cd authServer/server/ && npm run dev",
+    "authServerBuild": "cd authServer/server/ && npm run build",
+    "authServerStart": "cd authServer/server/ && npm start",
+    "authClientDev": "cd authServer/client/ && npm run dev",
+    "authClientBuild": "cd authServer/client/ && npm run build",
+    "authClientStart": "cd authServer/client/ && npm srart",
+    "server1ClientDev": "cd server1/client/ && npm run dev",
+    "server1ClientBuild": "cd server1/client/ && npm run build",
+    "server1ClientStart": "cd server1/client/ && npm start",
+    "server1ServerDev": "cd server1/server/ && npm run dev",
+    "server1ServerBuild": "cd server1/server/ && npm run build",
+    "server1ServerStart": "cd server1/server/ && npm start",
+    "dev": "concurrently \"npm run authServerDev\" \"npm run authClientDev\" \"npm run server1ClientDev\" \"npm run server1ServerDev\"",
+    "build": "concurrently \"npm run authServerBuild\" \"npm run authClientBuild\" \"npm run server1ClientBuild\" \"npm run server1ServerBuild\"",
+    "start": "concurrently \"npm run authServerStart\" \"npm run authClientStart\" \"npm run server1ClientStart\" \"npm run server1ServerStart\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

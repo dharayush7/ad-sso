@@ -1,0 +1,2 @@
+export const tempSalt = `73fb51a0c9be7d988355706b18374e775b18707a8a03f7a61198eefc64b409e8`;
+export const parmanentSalt = `r76rf5rr65d65sd7vs98v89sv8s68svs8yso8ystsu6s89680s60q6016016081`;
