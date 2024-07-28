@@ -1,22 +1,19 @@
 import { fetchAndValidedUser } from "@/controllers/user";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export default async function Home() {
   let result;
   const cookieStore = cookies();
   const auth = cookieStore.get("auth");
+
   if (auth) {
-    result = await fetchAndValidedUser(auth.toString());
-    if (!result.valided) {
-      cookieStore.delete("auth");
-      redirect("/");
-    }
+    result = await fetchAndValidedUser(auth.value);
   }
 
   return (
     <main>
+      {/* {result?.valided ? <></> : <CookieDeleter name="auth" />} */}
       <nav
         className="navbar navbar-expand-lg bg-body-tertiary bg-dark"
         data-bs-theme="dark"
@@ -76,7 +73,7 @@ export default async function Home() {
               </ul>
             ) : (
               <>
-                <a href="http://localhost:3000/callback?next=http://localhost:3000/indentify">
+                <a href="http://localhost:3000/callback?next=http://localhost:3001/identify">
                   <button
                     type="button"
                     className="btn btn-outline-primary"

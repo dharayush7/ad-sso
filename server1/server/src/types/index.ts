@@ -7,3 +7,8 @@ export interface UserInt {
   tempToken: null | string;
   pamanentToken: string;
 }
+
+export interface VerifyAndAuthUserInt {
+  error: boolean;
+  parmanentToken: string;
+}

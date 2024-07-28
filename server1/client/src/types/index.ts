@@ -4,3 +4,8 @@ export interface UserInt {
   lastName: string;
   email: string;
 }
+
+export interface VerifyUserInt {
+  error: boolean;
+  parmanentToken: string;
+}

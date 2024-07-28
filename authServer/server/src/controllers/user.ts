@@ -52,7 +52,7 @@ export async function handleFetchWithParmanentToken(
   const parmanentToken = req.body.parmanentToken;
   const payload = getVerify(parmanentToken, parmanentSalt);
   if (!payload) return res.send(JSON.stringify({ error: true }));
-  const result = await fetchAndVarifyUser(payload.id, parmanentToken);
+  const result = await fetchAndVarifyUser(payload.kindeId, parmanentToken);
   if (!result.user) return res.send(JSON.stringify({ error: true }));
-  return res.send(JSON.stringify({ error: false, user: result.user }));
+  return res.send(JSON.stringify({ error: false, ...result.user }));
 }

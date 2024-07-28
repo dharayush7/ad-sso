@@ -99,7 +99,7 @@ export async function verifyUserByTempToken(
     firstName: data.firstName,
     lastName: data.lastName,
     tempToken: null,
-    pamanentToken: token,
+    parmanentToken: token,
   });
 
   return { token: token };
@@ -116,7 +116,7 @@ export async function fetchAndVarifyUser(
   if (result.docs.length == 0) return { user: null };
   const data = result.docs[0].data();
 
-  if (data.pamanentToken !== parmanentToken) return { user: null };
+  if (data.parmanentToken !== parmanentToken) return { user: null };
 
   return { user: data };
 }

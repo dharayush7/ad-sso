@@ -8,6 +8,6 @@ export function getToken(payload: object, salt: string) {
 
 export function getVerify(token: string, salt: string) {
   const payload = jwt.verify(token, salt);
-  const res = JSON.parse(payload.toString());
+  const res = JSON.parse(JSON.stringify(payload));
   return res;
 }
