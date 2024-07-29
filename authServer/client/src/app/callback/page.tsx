@@ -1,19 +1,25 @@
-import AuthReadirect from "@/components/AuthRedirect";
-import SendBack from "@/components/SendBack";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
+import GetLocalStorage from "@/components/GetLocalStorage";
+import SetLocalStorage from "@/components/SetLocalStorage";
 import { userAuth } from "@/service/server";
 import { User } from "@/types";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-export default async function CallbackPage() {
+export default async function CallbackPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
   const { getUser, isAuthenticated } = getKindeServerSession();
-  if (!(await isAuthenticated())) {
-    return <AuthReadirect />;
+  const path = searchParams.next;
+  if (path) {
+    return <SetLocalStorage path={path.toString()} />;
   }
 
   const user = await getUser();
 
-  if (!user) {
-    return <AuthReadirect />;
+  if (!user || !(await isAuthenticated())) {
+    return redirect("/api/auth/login?post_login_redirect_url=/callback");
   }
 
   const destacturedUser: User = {
@@ -24,5 +30,6 @@ export default async function CallbackPage() {
   };
 
   const result = await userAuth(destacturedUser);
-  return <SendBack token={result.tempToken} />;
+
+  return <GetLocalStorage token={result.tempToken} />;
 }

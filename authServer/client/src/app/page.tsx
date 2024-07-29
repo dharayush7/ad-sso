@@ -7,14 +7,15 @@ export default async function Home() {
   const { getUser, isAuthenticated } = getKindeServerSession();
 
   if (!(await isAuthenticated())) {
-    return redirect("/api/auth/login?post_login_redirect_url=/callback?next=/");
+    return redirect("/callback?next=/");
   }
 
   const user = await getUser();
 
   if (!user) {
-    return redirect("/api/auth/login?post_login_redirect_url=/callback?next=/");
+    return redirect("/callback?next=/");
   }
+
   return (
     <main>
       <pre>
