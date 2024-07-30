@@ -13,7 +13,7 @@ export default async function CallbackPage({
   const { getUser, isAuthenticated } = getKindeServerSession();
   const path = searchParams.next;
   if (path) {
-    return <SetLocalStorage path={path.toString()} />;
+    return <SetLocalStorage path={path.toString()} url="/callback" />;
   }
 
   const user = await getUser();

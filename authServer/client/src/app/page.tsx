@@ -1,8 +1,6 @@
-import {
-  getKindeServerSession,
-  LogoutLink,
-} from "@kinde-oss/kinde-auth-nextjs/server";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
+
 export default async function Home() {
   const { getUser, isAuthenticated } = getKindeServerSession();
 
@@ -21,7 +19,7 @@ export default async function Home() {
       <pre>
         <code>{JSON.stringify(user)}</code>
       </pre>
-      <LogoutLink>LogOut</LogoutLink>
+      <a href="/logout?next=/message">Log Out</a>
     </main>
   );
 }

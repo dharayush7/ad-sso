@@ -120,3 +120,24 @@ export async function fetchAndVarifyUser(
 
   return { user: data };
 }
+
+export async function invalidToken(kindeId: string) {
+  const collectionRef = collection(firestore, "user");
+  const q = query(collectionRef, where("kindeId", "==", kindeId));
+  const result = await getDocs(q);
+  if (result.docs.length == 0) return { action: false };
+
+  const id = result.docs[0].id;
+  const data = result.docs[0].data();
+  const docRef = doc(firestore, "user", id);
+  await setDoc(docRef, {
+    kindeId: kindeId,
+    email: data.email,
+    firstName: data.firstName,
+    lastName: data.lastName,
+    tempToken: null,
+    parmanentToken: "",
+  });
+
+  return { action: true };
+}

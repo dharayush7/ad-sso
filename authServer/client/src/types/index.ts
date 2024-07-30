@@ -12,3 +12,7 @@ export interface AuthUser {
   lastName: string;
   tempToken: string;
 }
+
+export interface Invalid {
+  action: boolean;
+}

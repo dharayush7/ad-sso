@@ -3,6 +3,7 @@ import {
   authUser,
   verifyUserByTempToken,
   fetchAndVarifyUser,
+  invalidToken,
 } from "../service/firebase";
 import { tempSalt, parmanentSalt } from "../service/salts";
 import { getVerify } from "../service/jwt";
@@ -55,4 +56,15 @@ export async function handleFetchWithParmanentToken(
   const result = await fetchAndVarifyUser(payload.kindeId, parmanentToken);
   if (!result.user) return res.send(JSON.stringify({ error: true }));
   return res.send(JSON.stringify({ error: false, ...result.user }));
+}
+
+export async function handleInvalid(req: Request, res: Response) {
+  res.setHeader("Content-Type", "application/json");
+  const kindeId = req.body.kindeId;
+  const result = await invalidToken(kindeId);
+
+  if (result.action) {
+    return res.send(JSON.stringify({ action: result.action }));
+  }
+  return res.send(JSON.stringify({ action: result.action }));
 }
