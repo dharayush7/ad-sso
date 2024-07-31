@@ -136,7 +136,7 @@ export async function invalidToken(kindeId: string) {
     firstName: data.firstName,
     lastName: data.lastName,
     tempToken: null,
-    parmanentToken: "",
+    parmanentToken: null,
   });
 
   return { action: true };

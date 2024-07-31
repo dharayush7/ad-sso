@@ -15,14 +15,11 @@ export default async function Home() {
   return (
     <main>
       {result ? result.valided ? <></> : <CookieDeleter name="auth" /> : <></>}
-      <nav
-        className="navbar navbar-expand-lg bg-body-tertiary bg-dark"
-        data-bs-theme="dark"
-      >
+      <nav className="navbar navbar-expand-lg  bg-primary" data-bs-theme="dark">
         <div className="container-fluid d-flex justify-content-between align-items-center">
           <div className="container-fluid d-flex align-items-center">
             <a className="navbar-brand" href="/">
-              App1
+              App2
             </a>
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
@@ -70,7 +67,7 @@ export default async function Home() {
                     <li>
                       <a
                         className="dropdown-item"
-                        href="http://localhost:3000/logout?next=http://localhost:3001/logout"
+                        href="http://localhost:3000/logout?next=http://localhost:3002/logout"
                       >
                         Log Out
                       </a>
@@ -80,10 +77,10 @@ export default async function Home() {
               </ul>
             ) : (
               <>
-                <a href="http://localhost:3000/callback?next=http://localhost:3001/identify">
+                <a href="http://localhost:3000/callback?next=http://localhost:3002/identify">
                   <button
                     type="button"
-                    className="btn btn-outline-primary"
+                    className="btn btn-outline-light"
                     style={{ width: "150px", borderRadius: "30px" }}
                   >
                     Sign Up / Log In

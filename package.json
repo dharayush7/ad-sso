@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "AYUSH DHAR",
   "license": "MIT",
+  "git": "https://github.com/dharayush7/ad-sso.git",
   "scripts": {
     "authServerDev": "cd authServer/server/ && npm run dev",
     "authServerBuild": "cd authServer/server/ && npm run build",
@@ -18,9 +19,15 @@
     "server1ServerDev": "cd server1/server/ && npm run dev",
     "server1ServerBuild": "cd server1/server/ && npm run build",
     "server1ServerStart": "cd server1/server/ && npm start",
-    "dev": "concurrently \"npm run authServerDev\" \"npm run authClientDev\" \"npm run server1ClientDev\" \"npm run server1ServerDev\"",
-    "build": "concurrently \"npm run authServerBuild\" \"npm run authClientBuild\" \"npm run server1ClientBuild\" \"npm run server1ServerBuild\"",
-    "start": "concurrently \"npm run authServerStart\" \"npm run authClientStart\" \"npm run server1ClientStart\" \"npm run server1ServerStart\""
+    "server2ClientDev": "cd server2/client/ && npm run dev",
+    "server2ClientBuild": "cd server2/client/ && npm run build",
+    "server2ClientStart": "cd server2/client/ && npm start",
+    "server2ServerDev": "cd server2/server/ && npm run dev",
+    "server2ServerBuild": "cd server2/server/ && npm run build",
+    "server2ServerStart": "cd server2/server/ && npm start",
+    "dev": "concurrently \"npm run authServerDev\" \"npm run authClientDev\" \"npm run server1ClientDev\" \"npm run server1ServerDev\" \"npm run server2ClientDev\" \"npm run server2ServerDev\"",
+    "build": "concurrently \"npm run authServerBuild\" \"npm run authClientBuild\" \"npm run server1ClientBuild\" \"npm run server1ServerBuild\" \"npm run server2ClientBuild\" \"npm run server2ServerBuild\"",
+    "start": "concurrently \"npm run authServerStart\" \"npm run authClientStart\" \"npm run server1ClientStart\" \"npm run server1ServerStart\" \"npm run server2ClientStart\" \"npm run server2ServerStart\""
   },
   "dependencies": {
     "concurrently": "^8.2.2"

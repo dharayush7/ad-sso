@@ -1,11 +1,12 @@
+import Bootstrap from "@/components/Bootsrap";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Auth App",
-  description: "Authenticate App",
+  title: "App2",
+  description: "sso app 2",
 };
 
 export default function RootLayout({
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
+      <Bootstrap />
     </html>
   );
 }

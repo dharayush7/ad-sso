@@ -7,7 +7,7 @@ export function CookieDeleter({ name }: { name: string }) {
   header.set("type", "deleter");
   header.set("name", name);
 
-  const request: Request = new Request("http://localhost:3001/api/auth", {
+  const request: Request = new Request("http://localhost:3002/api/auth", {
     method: "POST",
     headers: header,
   });
@@ -45,7 +45,7 @@ export function CookieDeleter({ name }: { name: string }) {
               </button>
             </a>
             <a
-              href="http://localhost:3000/callback?next=http://localhost:3001/identify"
+              href="http://localhost:3000/callback?next=http://localhost:3002/identify"
               style={{ marginLeft: "0px" }}
             >
               <button

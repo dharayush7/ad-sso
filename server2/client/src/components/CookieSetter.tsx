@@ -8,7 +8,7 @@ export function CookieSetter({ name, value }: { name: string; value: string }) {
   header.set("name", name);
   header.set("value", value);
 
-  const request: Request = new Request("http://localhost:3001/api/auth", {
+  const request: Request = new Request("http://localhost:3002/api/auth", {
     method: "POST",
     headers: header,
   });
