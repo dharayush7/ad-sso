@@ -23,6 +23,7 @@ This project is a Single Sign-On (SSO) solution that involves three Next.js fron
 - Node.js (version 18 or higher)
 - npm or yarn or pnpm
 - A Kinda free account and configuration
+- Firebase free account
 - Port: 3000, 3001, 3002, 8000, 8001, 8002
 
 ### Setup
@@ -88,6 +89,94 @@ KINDE_POST_LOGOUT_REDIRECT_URL=http://localhost:3000/logout
 KINDE_POST_LOGIN_REDIRECT_URL=http://localhost:3000/dashboard
 ```
 
+
+
+
+## Firebase Setup
+Create a free account of Firebase.
+
+#### 5. Create project:
+Create a new project in firebase. Add web app in this app.
+
+#### 6. Utlity Setup:
+don't copy firebase config now. Go to build section and go firestore database. Activate this utlity.
+
+#### 7. Rules configure:
+- Go to rules section in firestore database.
+- The default rule look like this.
+
+```
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // This rule allows anyone with your Firestore database reference to view, edit,
+    // and delete all data in your Firestore database. It is useful for getting
+    // started, but it is configured to expire after 30 days because it
+    // leaves your app open to attackers. At that time, all client
+    // requests to your Firestore database will be denied.
+    //
+    // Make sure to write security rules for your app before that time, or else
+    // all client requests to your Firestore database will be denied until you Update
+    // your rules
+    match /{document=**} {
+      allow read, write: if request.time < timestamp.date(2024, 8, 2);
+    }
+  }
+}
+```
+- Now the change the last line ```allow read, write: if request.time < timestamp.date(2024, 8, 2);``` to ```allow read, write: if true;```
+
+- Now the rule look like this
+
+``` 
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // This rule allows anyone with your Firestore database reference to view, edit,
+    // and delete all data in your Firestore database. It is useful for getting
+    // started, but it is configured to expire after 30 days because it
+    // leaves your app open to attackers. At that time, all client
+    // requests to your Firestore database will be denied.
+    //
+    // Make sure to write security rules for your app before that time, or else
+    // all client requests to your Firestore database will be denied until you Update
+    // your rules
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+```
+
+#### 8. Copy Cofigurarion:
+
+- Go to project overview settings icon and click project settings.
+- Under the section "your app" the default app was selected.
+- Now copy "firebaseConfig" . 
+- The firebaseConfig look like this
+```
+const firebaseConfig = {
+  apiKey: // api id,
+  authDomain:  // auth domain,
+  databaseURL:  // database url,
+  projectId: // project ID,
+  storageBucket: // strorage Bucket,
+  messagingSenderId: // Messaging sender id,
+  appId: // app id 
+};
+```
+
+- Now to ```ad-sso/authServer/server/src/service/firebase.ts``` paste it in this...
+
+```
+const firebaseConfig = {
+  // Paste hare firebase config
+};
+```
 
 
 

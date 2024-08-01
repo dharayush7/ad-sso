@@ -14,12 +14,7 @@ import { tempSalt, parmanentSalt } from "./salts";
 import { getToken } from "./jwt";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD_rtEndxcFn86pCxCyxizApSZdaR_4r-I",
-  authDomain: "ad-chat-54649.firebaseapp.com",
-  projectId: "ad-chat-54649",
-  storageBucket: "ad-chat-54649.appspot.com",
-  messagingSenderId: "967558458468",
-  appId: "1:967558458468:web:469f09b70e5ade0d320371",
+  // Paste hare firebase config
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
