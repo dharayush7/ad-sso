@@ -190,17 +190,17 @@ Run this command to start the server:
 
 using npm:
 ```bash
-npm start
+npm run dev
 ```
 using yarn:
 ```bash
-yarn start
+yarn dev
 ```
 
 using pnpm:
 
 ```bash
-pnpm run start
+pnpm run dev
 ```
 
 ### Build project and Initialize server:
@@ -246,6 +246,9 @@ pnpm run start
 - [localhost:3000](localhost:3000)
 - [localhost:3001](localhost:3001)
 - [localhost:3002](localhost:3002)
+
+Now go to this websites and login any website, you are automatically logged in all sites.
+And log out are also same.
 ## 🔗 Links
 [portfolio](https://www.ayushdhar.com/)
 
